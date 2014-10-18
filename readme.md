@@ -2,6 +2,8 @@
 
 An unofficial boilerplate for hosting a local server that serves [Framer.js](https://github.com/koenbok/Framer) prototypes generated with the [Framer Generator](http://framerjs.com/static/downloads/Framer.zip) across your devices with [livereload](http://livereload.com).
 
+![](https://raw.githubusercontent.com/charliecm/framer-server/gh-pages/images/framer-server-ios-test.png)
+
 ## Setup
 
 Install [node](http://nodejs.org) dependencies from your terminal:

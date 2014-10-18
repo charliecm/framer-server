@@ -1,1 +1,0 @@
-Put your Framer project folders here.

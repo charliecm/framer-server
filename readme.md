@@ -1,6 +1,6 @@
 # Framer Server
 
-An unofficial boilerplate for hosting a local server that serves [Framer.js](https://github.com/koenbok/Framer) prototypes generated with the [Framer Generator](http://framerjs.com/static/downloads/Framer.zip) across your devices.
+An unofficial boilerplate for hosting a local server that serves [Framer.js](https://github.com/koenbok/Framer) prototypes generated with the [Framer Generator](http://framerjs.com/static/downloads/Framer.zip) across your devices with [livereload](http://livereload.com).
 
 ## Setup
 

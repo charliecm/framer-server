@@ -1,4 +1,4 @@
 node_modules/
 projects/*
-!projects/readme.md
+!projects/sample/*
 *.sublime-*

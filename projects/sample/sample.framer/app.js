@@ -1,29 +1,26 @@
-myLayers = Framer.Importer.load("imported/sample");
+(function() {
+  var layer, layerName, layers;
 
-// Demo code
-// Bounce all the views
+  layers = Framer.Importer.load('imported/sample');
 
-for (layerName in myLayers) {
+  for (layerName in layers) {
+    layer = layers[layerName];
+    layer.on(Events.Click, function(event, layer) {
+      layer.scale = 0.7;
+      layer.animate({
+        properties: {
+          scale: 1.0
+        },
+        curve: 'spring',
+        curveOptions: {
+          friction: 15,
+          tension: 1000
+        }
+      });
+      return event.stopPropagation();
+    });
+  }
 
-	var layer = myLayers[layerName];
+}).call(this);
 
-	layer.on(Events.Click, function(event, layer) {
-
-		// Wind up the layer by making it smaller
-		layer.scale = 0.7
-
-		// Animate the layer back to the original size with a spring
-		layer.animate({
-			properties: {scale:1.0},
-			curve: "spring",
-			curveOptions: {
-				friction: 15,
-				tension: 1000,
-			}
-		})
-
-		// Only animate this layer, not other ones below
-		event.stopPropagation();
-
-	});
-}
+//# sourceMappingURL=app.js.map

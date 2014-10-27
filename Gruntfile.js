@@ -70,25 +70,38 @@ module.exports = function (grunt) {
 	            }
             }
         },
+        coffee: {
+            compile: {
+                options: {
+                    sourceMap: true
+                },
+                files: [{
+                    expand: true,
+                    src: '<%= paths.projects %>/*.coffee',
+                    ext: '.js'
+                }]
+            }
+        },
         watch: {
-            options: {
-                livereload: true
-            },
             html: {
+                options: {
+                    livereload: true
+                },
                 files: [
                     '<%= paths.projects %>/index.html',
-                    '<%= paths.projects %>/app.js',
+                    '<%= paths.projects %>/*.js',
                     '<%= paths.projects %>/images/**',
                     '<%= paths.projects %>/framer/**',
                     '<%= paths.projects %>/imported/**'
                 ],
                 tasks: [ 'generateManifest' ]
+            },
+            coffee: {
+                files: '<%= paths.projects %>/*.coffee',
+                tasks: [ 'coffee:compile' ]
             }
         }
     });
-
-    grunt.loadNpmTasks('grunt-contrib-connect');
-    grunt.loadNpmTasks('grunt-contrib-watch');
 
     /**
      * Generates an HTML5 offline app cache manifest for offline access.
@@ -128,9 +141,11 @@ module.exports = function (grunt) {
                         manifestFile = sourceDir + '/cache.manifest';
                     if (grunt.file.exists(manifestFile)) {
                         grunt.file.delete(manifestFile);
+                        if (!options.enable) {
+                            grunt.log.writeln('Removed cache manifest: ' + manifestFile);
+                        }
                     }
                     if (!options.enable) {
-                        grunt.log.writeln('Removed cache manifest: ' + manifestFile);
                         return;
                     }
                     grunt.file.write(manifestFile, getManifestContent(sourceDir));
@@ -141,8 +156,13 @@ module.exports = function (grunt) {
 
     });
 
+    grunt.loadNpmTasks('grunt-contrib-connect');
+    grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-contrib-coffee');
+
     grunt.registerTask('default', [
         'generateManifest',
+        'coffee:compile',
         'connect:server',
         'watch'
     ]);

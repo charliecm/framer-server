@@ -116,7 +116,7 @@ window.__imported__["sample/layers.json.js"] = [
         "y" : 0,
         "x" : 0,
         "width" : 750,
-        "height" : 1314
+        "height" : 1334
       }
     },
     "imageType" : "png",
@@ -124,7 +124,7 @@ window.__imported__["sample/layers.json.js"] = [
       "y" : 0,
       "x" : 0,
       "width" : 750,
-      "height" : 1314
+      "height" : 1334
     },
     "name" : "Screen"
   }
